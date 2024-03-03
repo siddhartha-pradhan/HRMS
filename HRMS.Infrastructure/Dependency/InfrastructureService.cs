@@ -18,7 +18,7 @@ public static class InfrastructureService
             options.UseSqlServer(connectionString,
                 b => b.MigrationsAssembly("HRMS.Infrastructure")));
 
-        services.AddScoped<IDbInitializer, DbInitializer>();
+        // services.AddScoped<IDbInitializer, DbInitializer>();
 
         services.AddTransient<IGenericRepository, GenericRepository>();
 

@@ -10,7 +10,7 @@ var configuration = builder.Configuration;
 
 services.AddInfrastructureService(configuration);
 
-services.AddIdentityService(configuration);
+// services.AddIdentityService(configuration);
 
 services.AddControllersWithViews();
 
@@ -32,7 +32,7 @@ var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/User/Home/Error");
+    app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
 

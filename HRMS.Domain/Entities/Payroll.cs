@@ -1,4 +1,5 @@
-﻿using HRMS.Domain.Base;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using HRMS.Domain.Base;
 
 namespace HRMS.Domain.Entities;
 
@@ -6,7 +7,7 @@ public class Payroll : BaseEntity<Guid>
 {
     public Guid EmployeeId { get; set; }
     
-    public int Month { get; set; }
+    public string Month { get; set; }
     
     public int Year { get; set; }
     
@@ -28,5 +29,6 @@ public class Payroll : BaseEntity<Guid>
     
     public decimal OtherDeductions { get; set; }
     
+    [ForeignKey("EmployeeId")]
     public virtual Employee Employee { get; set; }
 }
