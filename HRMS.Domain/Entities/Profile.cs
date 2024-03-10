@@ -10,5 +10,5 @@ public class Profile : BaseEntity<Guid>
     
     public string LinkedIn { get; set; }
     
-    public string ResumtURL { get; set; }
+    public string ResumeURL { get; set; }
 }

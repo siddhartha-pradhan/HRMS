@@ -1,10 +1,7 @@
 ﻿using System.Reflection;
 using HRMS.Domain.Entities;
-using HRMS.Domain.Entities.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Task = HRMS.Domain.Entities.Task;
-using Role = HRMS.Domain.Entities.Identity.Role;
 using RoleModel = HRMS.Domain.Entities.Role;
 
 namespace HRMS.Infrastructure.Persistence;
@@ -81,6 +78,12 @@ public sealed class ApplicationDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        
+        builder.Entity<Employee>()
+            .HasOne(e => e.Grade)
+            .WithMany()
+            .HasForeignKey(e => e.GradeId)
+            .OnDelete(DeleteBehavior.Restrict);
         
         base.OnModelCreating(builder);
 
